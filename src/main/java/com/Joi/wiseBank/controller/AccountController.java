@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AccountController {
-    @GetMapping("/myAccount")
+    @GetMapping("/account")
     public String getAccountDetails() {
         return "Welcome to Wise bank";
     }
