@@ -12,11 +12,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> {
-            ((AuthorizeHttpRequestsConfigurer.AuthorizedUrl)requests.anyRequest()).authenticated();
-        });
-        http.formLogin(Customizer.withDefaults());
-        http.httpBasic(Customizer.withDefaults());
+        http.authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/account", "/balance", "/loans", "/cards").authenticated()
+                        .requestMatchers("/notices", "/contact").permitAll())
+                .formLogin(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults());
         return (SecurityFilterChain)http.build();
     }
 }
