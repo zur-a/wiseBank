@@ -19,11 +19,14 @@ import javax.sql.DataSource;
 public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
+        http
+                .csrf((csrf) -> csrf.disable())
+                .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/account", "/balance", "/loans", "/cards").authenticated()
-                        .requestMatchers("/notices", "/contact").permitAll())
+                        .requestMatchers("/notices", "/contact", "/register").permitAll())
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults());
+        
         return (SecurityFilterChain)http.build();
     }
 
