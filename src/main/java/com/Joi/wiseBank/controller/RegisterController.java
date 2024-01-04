@@ -5,6 +5,7 @@ import com.Joi.wiseBank.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,8 @@ public class RegisterController {
     @Autowired
     CustomerRepository customerRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
     private ResponseEntity response = null;
 
     @PostMapping("/register")
@@ -21,6 +24,8 @@ public class RegisterController {
         Customer registeringCustomer = null;
 
         try {
+            String hashPassword = passwordEncoder.encode(customer.getPwd());
+            customer.setPwd(hashPassword);
             registeringCustomer = customerRepository.save(customer);
             if (registeringCustomer.getId() > 0) {
                 response = ResponseEntity

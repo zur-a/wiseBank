@@ -1,18 +1,18 @@
 package com.Joi.wiseBank.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Customer {
     @Id
-    @SequenceGenerator(
-            name = "customer_sequence",
-            sequenceName = "customer_sequence",
-            allocationSize = 1
-    )
     @GeneratedValue(
             strategy = GenerationType.AUTO,
-            generator = "customer_sequence"
+            generator = "native"
+    )
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
     )
     private int id;
     @Column
