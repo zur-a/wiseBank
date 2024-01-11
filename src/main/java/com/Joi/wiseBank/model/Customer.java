@@ -1,5 +1,6 @@
 package com.Joi.wiseBank.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -15,12 +16,45 @@ public class Customer {
             strategy = "native"
     )
     private int id;
+
+    @Column
+    private String name;
     @Column
     private String email;
-    @Column
+
+    @Column(name="mobile_number")
+    private String mobileNumber;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pwd;
     @Column
     private String role;
+
+    @Column(name="create_dt")
+    private String createDate;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
+    }
 
     public int getId() {
         return id;
