@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface AccountTransactionsRepositry extends CrudRepository<AccountsRepository, Long> {
-    List<AccountsRepository>  findByCustomerIdOrderByTransactionDesc(int customerId);
+    List<AccountsRepository>  findByCustomerIdOrderByTransactionDateDesc(int customerId);
 }
