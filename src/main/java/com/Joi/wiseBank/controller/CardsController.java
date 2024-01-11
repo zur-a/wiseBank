@@ -1,7 +1,7 @@
 package com.Joi.wiseBank.controller;
 
-import com.Joi.wiseBank.Repository.LoansRepository;
-import com.Joi.wiseBank.model.Loans;
+import com.Joi.wiseBank.Repository.CardsRepository;
+import com.Joi.wiseBank.model.Cards;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class LoanController {
+public class CardsController {
     @Autowired
-    private LoansRepository repository;
-    @GetMapping("/loans")
-    public List<Loans> getLoanDetails(@RequestParam int id) {
-        List<Loans> loans = repository.findByCustomerIdOrderByStartDateDesc(id);
-        if (loans != null) {
-            return loans;
+    private CardsRepository repository;
+    @GetMapping("/cards")
+    public List<Cards> getCardDetails(@RequestParam int id) {
+        List<Cards> cards = repository.findByCustomerId(id);
+        if (cards != null) {
+            return cards;
         } else {
             return null;
         }
