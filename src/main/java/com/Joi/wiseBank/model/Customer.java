@@ -15,6 +15,7 @@ public class Customer {
             name = "native",
             strategy = "native"
     )
+    @Column(name="customer_id")
     private int id;
 
     @Column
