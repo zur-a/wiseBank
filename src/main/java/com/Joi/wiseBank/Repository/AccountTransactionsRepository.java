@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AccountTransactionsRepository extends CrudRepository<AccountsRepository, Long> {
+public interface AccountTransactionsRepository extends CrudRepository<AccountTransactions, Long> {
     List<AccountTransactions> findByCustomerIdOrderByTransactionDateDesc(int customerId);
 }
