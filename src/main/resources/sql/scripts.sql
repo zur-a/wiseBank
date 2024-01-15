@@ -14,7 +14,7 @@ CREATE TABLE `customer` (
 );
 
 INSERT INTO `customer` (`name`,`email`,`mobile_number`, `pwd`, `role`,`create_dt`)
- VALUES ('Happy','happy@example.com','9876548337', '$2y$12$oRRbkNfwuR8ug4MlzH5FOeui.//1mkd.RsOAJMbykTSupVy.x/vb2', 'admin',CURDATE());
+ VALUES ('zura','katsura@koi.com','9876548337', '$2y$12$oRRbkNfwuR8ug4MlzH5FOeui.//1mkd.RsOAJMbykTSupVy.x/vb2', 'admin', CURDATE());
 
 CREATE TABLE `accounts` (
   `customer_id` int NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `accounts` (
 );
 
 INSERT INTO `accounts` (`customer_id`, `account_number`, `account_type`, `branch_address`, `create_dt`)
- VALUES (1, 1865764534, 'Savings', '123 Main Street, New York', CURDATE());
+ VALUES (1, 1865764534, 'Corrente', 'Rua José C & Silva, 25', CURDATE());
 
 CREATE TABLE `account_transactions` (
   `transaction_id` varchar(200) NOT NULL,
@@ -50,22 +50,22 @@ CREATE TABLE `account_transactions` (
 
 
 INSERT INTO `account_transactions` (`transaction_id`, `account_number`, `customer_id`, `transaction_dt`, `transaction_summary`, `transaction_type`,`transaction_amt`,
-`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 7 DAY), 'Coffee Shop', 'Withdrawal', 30,34500,DATE_SUB(CURDATE(), INTERVAL 7 DAY));
+`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 7 DAY), 'Cãfé Shoto', 'Saque', 30,34500,DATE_SUB(CURDATE(), INTERVAL 7 DAY));
 
 INSERT INTO `account_transactions` (`transaction_id`, `account_number`, `customer_id`, `transaction_dt`, `transaction_summary`, `transaction_type`,`transaction_amt`,
-`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 6 DAY), 'Uber', 'Withdrawal', 100,34400,DATE_SUB(CURDATE(), INTERVAL 6 DAY));
+`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 6 DAY), 'Uber', 'Saque', 100,34400,DATE_SUB(CURDATE(), INTERVAL 6 DAY));
 
 INSERT INTO `account_transactions` (`transaction_id`, `account_number`, `customer_id`, `transaction_dt`, `transaction_summary`, `transaction_type`,`transaction_amt`,
-`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 5 DAY), 'Self Deposit', 'Deposit', 500,34900,DATE_SUB(CURDATE(), INTERVAL 5 DAY));
+`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 5 DAY), 'Farmácia Boa Vida', 'Depósito', 500,34900,DATE_SUB(CURDATE(), INTERVAL 5 DAY));
 
 INSERT INTO `account_transactions` (`transaction_id`, `account_number`, `customer_id`, `transaction_dt`, `transaction_summary`, `transaction_type`,`transaction_amt`,
-`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 4 DAY), 'Ebay', 'Withdrawal', 600,34300,DATE_SUB(CURDATE(), INTERVAL 4 DAY));
+`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 4 DAY), 'Ebay', 'Saque', 600,34300,DATE_SUB(CURDATE(), INTERVAL 4 DAY));
 
 INSERT INTO `account_transactions` (`transaction_id`, `account_number`, `customer_id`, `transaction_dt`, `transaction_summary`, `transaction_type`,`transaction_amt`,
-`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 2 DAY), 'OnlineTransfer', 'Deposit', 700,35000,DATE_SUB(CURDATE(), INTERVAL 2 DAY));
+`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 2 DAY), 'OnlineTransfer', 'Depósito', 700,35000,DATE_SUB(CURDATE(), INTERVAL 2 DAY));
 
 INSERT INTO `account_transactions` (`transaction_id`, `account_number`, `customer_id`, `transaction_dt`, `transaction_summary`, `transaction_type`,`transaction_amt`,
-`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 1 DAY), 'Amazon.com', 'Withdrawal', 100,34900,DATE_SUB(CURDATE(), INTERVAL 1 DAY));
+`closing_balance`, `create_dt`)  VALUES (UUID(), 1865764534, 1, DATE_SUB(CURDATE(), INTERVAL 1 DAY), 'Amazon', 'Saque', 100,34900,DATE_SUB(CURDATE(), INTERVAL 1 DAY));
 
 
 CREATE TABLE `loans` (
@@ -83,16 +83,16 @@ CREATE TABLE `loans` (
 );
 
 INSERT INTO `loans` ( `customer_id`, `start_dt`, `loan_type`, `total_loan`, `amount_paid`, `outstanding_amount`, `create_dt`)
- VALUES ( 1, '2020-10-13', 'Home', 200000, 50000, 150000, '2020-10-13');
+ VALUES ( 1, '2020-10-13', 'Casa', 200000, 50000, 150000, '2020-10-13');
 
 INSERT INTO `loans` ( `customer_id`, `start_dt`, `loan_type`, `total_loan`, `amount_paid`, `outstanding_amount`, `create_dt`)
- VALUES ( 1, '2020-06-06', 'Vehicle', 40000, 10000, 30000, '2020-06-06');
+ VALUES ( 1, '2020-06-06', 'Veículo', 40000, 10000, 30000, '2020-06-06');
 
 INSERT INTO `loans` ( `customer_id`, `start_dt`, `loan_type`, `total_loan`, `amount_paid`, `outstanding_amount`, `create_dt`)
- VALUES ( 1, '2018-02-14', 'Home', 50000, 10000, 40000, '2018-02-14');
+ VALUES ( 1, '2018-02-14', 'Casa', 50000, 10000, 40000, '2018-02-14');
 
 INSERT INTO `loans` ( `customer_id`, `start_dt`, `loan_type`, `total_loan`, `amount_paid`, `outstanding_amount`, `create_dt`)
- VALUES ( 1, '2018-02-14', 'Personal', 10000, 3500, 6500, '2018-02-14');
+ VALUES ( 1, '2018-02-14', 'Consignado', 10000, 3500, 6500, '2018-02-14');
 
 CREATE TABLE `cards` (
   `card_id` int NOT NULL AUTO_INCREMENT,
@@ -109,13 +109,13 @@ CREATE TABLE `cards` (
 );
 
 INSERT INTO `cards` (`card_number`, `customer_id`, `card_type`, `total_limit`, `amount_used`, `available_amount`, `create_dt`)
- VALUES ('4565XXXX4656', 1, 'Credit', 10000, 500, 9500, CURDATE());
+ VALUES ('4565XXXX4656', 1, 'Crédito', 10000, 500, 9500, CURDATE());
 
 INSERT INTO `cards` (`card_number`, `customer_id`, `card_type`, `total_limit`, `amount_used`, `available_amount`, `create_dt`)
- VALUES ('3455XXXX8673', 1, 'Credit', 7500, 600, 6900, CURDATE());
+ VALUES ('3455XXXX8673', 1, 'Crédito', 7500, 600, 6900, CURDATE());
 
 INSERT INTO `cards` (`card_number`, `customer_id`, `card_type`, `total_limit`, `amount_used`, `available_amount`, `create_dt`)
- VALUES ('2359XXXX9346', 1, 'Credit', 20000, 4000, 16000, CURDATE());
+ VALUES ('2359XXXX9346', 1, 'Crédito', 20000, 4000, 16000, CURDATE());
 
 CREATE TABLE `notice_details` (
   `notice_id` int NOT NULL AUTO_INCREMENT,
@@ -129,27 +129,27 @@ CREATE TABLE `notice_details` (
 );
 
 INSERT INTO `notice_details` ( `notice_summary`, `notice_details`, `notic_beg_dt`, `notic_end_dt`, `create_dt`, `update_dt`)
-VALUES ('Home Loan Interest rates reduced', 'Home loan interest rates are reduced as per the goverment guidelines. The updated rates will be effective immediately',
+VALUES ('Taxas de juros de empréstimos à habitação reduzidas', 'As taxas de juros dos empréstimos à habitação são reduzidas de acordo com as diretrizes do governo. As taxas atualizadas entrarão em vigor imediatamente',
 CURDATE() - INTERVAL 30 DAY, CURDATE() + INTERVAL 30 DAY, CURDATE(), null);
 
 INSERT INTO `notice_details` ( `notice_summary`, `notice_details`, `notic_beg_dt`, `notic_end_dt`, `create_dt`, `update_dt`)
-VALUES ('Net Banking Offers', 'Customers who will opt for Internet banking while opening a saving account will get a $50 amazon voucher',
+VALUES ('Ofertas do Internet Banking', 'Clientes que optarem pelo Internet banking ao abrir uma conta poupança receberão um voucher amazon de R$50',
 CURDATE() - INTERVAL 30 DAY, CURDATE() + INTERVAL 30 DAY, CURDATE(), null);
 
 INSERT INTO `notice_details` ( `notice_summary`, `notice_details`, `notic_beg_dt`, `notic_end_dt`, `create_dt`, `update_dt`)
-VALUES ('Mobile App Downtime', 'The mobile application of the EazyBank will be down from 2AM-5AM on 12/05/2020 due to maintenance activities',
+VALUES ('Tempo de inatividade do aplicativo móvel', 'O aplicativo móvel do EazyBank ficará indisponível das 2h às 5h do dia 05/01/2024 devido a atividades de manutenção',
 CURDATE() - INTERVAL 30 DAY, CURDATE() + INTERVAL 30 DAY, CURDATE(), null);
 
 INSERT INTO `notice_details` ( `notice_summary`, `notice_details`, `notic_beg_dt`, `notic_end_dt`, `create_dt`, `update_dt`)
-VALUES ('E Auction notice', 'There will be a e-auction on 12/08/2020 on the Bank website for all the stubborn arrears.Interested parties can participate in the e-auction',
+VALUES ('E Aviso de leilão', 'Haverá um leilão eletrônico em 18/01/2024 no site do Banco para todos os atrasos persistentes.Os interessados ​​​​podem participar do leilão eletrônico',
 CURDATE() - INTERVAL 30 DAY, CURDATE() + INTERVAL 30 DAY, CURDATE(), null);
 
 INSERT INTO `notice_details` ( `notice_summary`, `notice_details`, `notic_beg_dt`, `notic_end_dt`, `create_dt`, `update_dt`)
-VALUES ('Launch of Millennia Cards', 'Millennia Credit Cards are launched for the premium customers of EazyBank. With these cards, you will get 5% cashback for each purchase',
+VALUES ('Lançamento dos Cartões Malenia', 'Os Cartões de Crédito Malenia são lançados para os clientes premium do EazyBank. Com esses cartões, você receberá 5% de cashback para cada compra',
 CURDATE() - INTERVAL 30 DAY, CURDATE() + INTERVAL 30 DAY, CURDATE(), null);
 
 INSERT INTO `notice_details` ( `notice_summary`, `notice_details`, `notic_beg_dt`, `notic_end_dt`, `create_dt`, `update_dt`)
-VALUES ('COVID-19 Insurance', 'EazyBank launched an insurance policy which will cover COVID-19 expenses. Please reach out to the branch for more details',
+VALUES ('Seguro COVID-19', 'Wise Bank lançou uma apólice de seguro que cobrirá as despesas do COVID-19. Entre em contato com a filial para obter mais detalhes',
 CURDATE() - INTERVAL 30 DAY, CURDATE() + INTERVAL 30 DAY, CURDATE(), null);
 
 CREATE TABLE `contact_messages` (
@@ -161,4 +161,3 @@ CREATE TABLE `contact_messages` (
   `create_dt` date DEFAULT NULL,
   PRIMARY KEY (`contact_id`)
 );
-

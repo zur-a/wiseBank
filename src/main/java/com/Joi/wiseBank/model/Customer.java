@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.Date;
+
 @Entity
 public class Customer {
     @Id
@@ -31,7 +33,7 @@ public class Customer {
     private String role;
 
     @Column(name="create_dt")
-    private String createDate;
+    private Date createDate;
 
     public String getName() {
         return name;
@@ -49,11 +51,11 @@ public class Customer {
         this.mobileNumber = mobileNumber;
     }
 
-    public String getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 

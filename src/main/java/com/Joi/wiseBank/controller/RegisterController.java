@@ -30,7 +30,10 @@ public class RegisterController {
         try {
             String hashPassword = passwordEncoder.encode(customer.getPwd());
             customer.setPwd(hashPassword);
-            customer.setCreateDate(String.valueOf(new Date(System.currentTimeMillis())));
+
+            // Set create_dt using java.sql.Date
+            customer.setCreateDate(new Date(System.currentTimeMillis()));
+
             registeringCustomer = repository.save(customer);
 
             if (registeringCustomer.getId() > 0) {
@@ -38,7 +41,7 @@ public class RegisterController {
                         .status(HttpStatus.CREATED)
                         .body("Customer is succesfully registered");
             }
-            
+
         } catch (Exception e) {
             response = ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
