@@ -43,7 +43,11 @@ public class SecurityConfig {
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests((requests)->requests
-                        .requestMatchers("/account", "/balance", "/loans", "/cards", "/user").authenticated()
+                        .requestMatchers("/account").hasAuthority("VIEWACCOUNT")
+                        .requestMatchers("/balance").hasAnyAuthority("VIEWACCOUNT", ("VIEWBALANCE"))
+                        .requestMatchers("/loans").hasAuthority("VIEWLOANS")
+                        .requestMatchers("/cards").hasAuthority("VIEWCARDS")
+                        .requestMatchers("/user").authenticated()
                         .requestMatchers("/notices", "/contact", "/register").permitAll())
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults());
